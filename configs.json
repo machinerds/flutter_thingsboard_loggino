@@ -1,9 +1,9 @@
 {
-  "thingsboardApiEndpoint": "http://iot.darestan.ir:8080",
-  "appLinksUrlHost": "iot.darestan.ir:8080",
-  "appLinksUrlScheme": "http",
-  "androidApplicationId": "com.loggino.app",
-  "androidApplicationName": "LogginoMobileApp",
-  "thingsboardOAuth2CallbackUrlScheme": "com.loggino.app.auth",
-  "thingsboardAndroidAppSecret": "WHQwVG1XOFIzaGZ2R2RLeXJIbEVEREc1d3pUZVE1b1dLMUMzRjRVQTBpaG9RcXY1aGNRT1d2QjJzekZwNmhlRg=="
+    "thingsboardApiEndpoint": "http://iot.darestan.ir:8080",
+    "appLinksUrlHost": "iot.darestan.ir:8080",
+    "appLinksUrlScheme": "http",
+    "androidApplicationId": "com.loggino.app",
+    "androidApplicationName": "Jaam",
+    "thingsboardOAuth2CallbackUrlScheme": "com.loggino.app.auth",
+    "thingsboardAndroidAppSecret": "WHQwVG1XOFIzaGZ2R2RLeXJIbEVEREc1d3pUZVE1b1dLMUMzRjRVQTBpaG9RcXY1aGNRT1d2QjJzekZwNmhlRg=="
 }
