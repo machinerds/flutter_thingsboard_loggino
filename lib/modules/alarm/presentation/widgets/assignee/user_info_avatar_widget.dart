@@ -24,9 +24,10 @@ class UserInfoAvatarWidget extends StatelessWidget {
       child: Center(
         child: Text(
           shortName,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.vazirmatn(
             fontWeight: FontWeight.w700,
             fontSize: 14,
+
             letterSpacing: 1,
             height: 1.14,
             color: Colors.white,

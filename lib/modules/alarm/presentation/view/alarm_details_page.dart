@@ -62,7 +62,7 @@ class _AlarmDetailsPageState extends TbContextState<AlarmDetailsPage> {
                   tbContext,
                   title: Text(
                     state.alarmInfo.type,
-                    style: TbTextStyles.titleXs.copyWith(
+                    style: TbTextStyles.labelMedium.copyWith(
                       color: Colors.black.withValues(alpha: .87),
                     ),
                   ),
@@ -116,7 +116,7 @@ class _AlarmDetailsPageState extends TbContextState<AlarmDetailsPage> {
                   tbContext,
                   title: Text(
                     S.of(context).failedToLoadAlarmDetails,
-                    style: TbTextStyles.titleXs.copyWith(
+                    style: TbTextStyles.labelMedium.copyWith(
                       color: Colors.black.withValues(alpha: .87),
                     ),
                   ),

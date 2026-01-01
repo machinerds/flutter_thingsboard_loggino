@@ -25,11 +25,7 @@ class ManuallyConnectToWifi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset(
-          ThingsboardImage.connectMobile,
-          width: 140,
-          height: 140,
-        ),
+        SvgPicture.asset(LogginoImage.connectMobile, width: 140, height: 140),
         const SizedBox(height: 16),
         Text(
           S.of(context).pleaseFollowTheNextStepsToConnectYourPhoneTo,
@@ -41,7 +37,9 @@ class ManuallyConnectToWifi extends StatelessWidget {
         const SizedBox(height: 16),
         DottedPointWidget(S.of(context).openWifiSettings),
         const SizedBox(height: 16),
-        DottedPointWidget(S.of(context).connectToWifiSimilarToWifiname(wifiName)),
+        DottedPointWidget(
+          S.of(context).connectToWifiSimilarToWifiname(wifiName),
+        ),
         const SizedBox(height: 16),
         DottedPointWidget(S.of(context).returnToTheAppAndTapReadyButton),
         const Spacer(),

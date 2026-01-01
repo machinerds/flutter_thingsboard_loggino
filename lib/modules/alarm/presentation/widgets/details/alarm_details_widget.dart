@@ -83,7 +83,10 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
                   AlarmDetailsContentWidget(
                     title: S.of(context).status,
                     details:
-                        widget.alarmInfo.status?.getTranslatedAlarmStatus(context) ?? '',
+                        widget.alarmInfo.status?.getTranslatedAlarmStatus(
+                          context,
+                        ) ??
+                        '',
                   ),
                   AlarmDetailsContentWidget(
                     title: S.of(context).type,
@@ -91,8 +94,8 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
                   ),
                   AlarmDetailsContentWidget(
                     title: S.of(context).severity,
-                    details:
-                       widget.alarmInfo.severity.getTranslatedAlarmSeverity(context),
+                    details: widget.alarmInfo.severity
+                        .getTranslatedAlarmSeverity(context),
                     detailsStyle: TbTextStyles.labelLarge.copyWith(
                       color: widget.alarmInfo.severity.toColor(),
                     ),
@@ -137,7 +140,7 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
                         ),
                         child: Text(
                           S.of(context).viewDashboard,
-                          style: TbTextStyles.titleXs.copyWith(
+                          style: TbTextStyles.labelMedium.copyWith(
                             color: Theme.of(context).primaryColor,
                           ),
                         ),

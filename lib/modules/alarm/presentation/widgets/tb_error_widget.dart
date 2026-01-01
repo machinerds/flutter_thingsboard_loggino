@@ -16,11 +16,11 @@ class TbErrorWidget extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 72),
-        SvgPicture.asset(ThingsboardImage.noDataImage, width: 94, height: 76),
+        SvgPicture.asset(LogginoImage.noDataImage, width: 94, height: 76),
         const SizedBox(height: 12),
         Text(
           title ?? S.of(context).failedToLoadTheList,
-          style: TbTextStyles.titleXs.copyWith(
+          style: TbTextStyles.labelMedium.copyWith(
             color: Colors.black.withValues(alpha: .87),
           ),
         ),

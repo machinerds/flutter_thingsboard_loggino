@@ -76,6 +76,7 @@ dependencies:
   json_annotation: ^4.9.0
   mobile_scanner: ^7.0.1
   flutter_hooks: ^0.21.2
+  iconsax_flutter: ^1.0.1
   esp_provisioning_softap:
     git:
       url: https://github.com/thingsboard/esp_provisioning_softap
@@ -96,6 +97,7 @@ dev_dependencies:
   json_serializable: ^6.9.5
   freezed: ^3.1.0
   flutter_gen: ^5.11.0
+  change_app_package_name: ^1.4.0
 dependency_overrides:
   logger: ^2.5.0
   http: ^1.3.0
@@ -144,3 +146,8 @@ flutter_gen:
     flutter_svg: true
     rive: true
     lottie: true
+
+  fonts:
+    - family: Vazirmatn
+      fonts:
+        - asset: assets/fonts/Vazirmatn.ttf

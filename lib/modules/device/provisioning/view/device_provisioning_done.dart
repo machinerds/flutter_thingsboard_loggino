@@ -14,7 +14,7 @@ class DeviceProvisioningDone extends StatelessWidget {
       children: [
         Center(
           child: SvgPicture.asset(
-            ThingsboardImage.deviceProvisioningDone,
+            LogginoImage.deviceProvisioningDone,
             width: 140,
             height: 140,
           ),
@@ -25,7 +25,7 @@ class DeviceProvisioningDone extends StatelessWidget {
             child: Text(
               S.of(context).claimingMessageSuccess,
               textAlign: TextAlign.center,
-              style: TbTextStyles.titleSmallSb.copyWith(
+              style: TbTextStyles.labelSmall.copyWith(
                 color: Colors.black.withValues(alpha: .54),
               ),
             ),

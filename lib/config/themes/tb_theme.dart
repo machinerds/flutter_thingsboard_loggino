@@ -1,64 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:thingsboard_app/config/themes/app_text_theme.dart';
 import 'package:thingsboard_app/utils/transition/page_transitions.dart';
 
-const int _tbPrimaryColorValue = 0xFF305680;
-const Color _tbPrimaryColor = Color(_tbPrimaryColorValue);
-const Color _tbSecondaryColor = Color(0xFF527dad);
-const Color _tbDarkPrimaryColor = Color(0xFF9fa8da);
-Color get appPrimaryColor => _tbPrimaryColor;
-const int _tbTextColorValue = 0xFF282828;
-const Color _tbTextColor = Color(_tbTextColorValue);
+// Your main colors
+const Color _primaryColor = Color(0xFF561044);
+const Color _secondaryColor = Color(0xFF043927);
+const Color _tertiaryColor = Color(0xFFEF763D);
+const Color _textColor = Color(0xFF000000);
+const Color _surfaceColor = Color(0xFFEEF4FF);
+const Color _errorColor = Color(0xFFA3101C);
+const Color _onPrimaryColor = Colors.white;
+const Color _onSecondaryColor = Colors.black;
+const Color _onSurfaceColor = Colors.black;
+const Color _onErrorColor = Colors.white;
 
-Typography tbTypography = Typography.material2018();
+// Material color swatches
+MaterialColor createMaterialColor(Color color) {
+  final List<double> strengths = <double>[0.05]; // <-- typed
+  final Map<int, Color> swatch = {};
+  final int r = color.red, g = color.green, b = color.blue;
 
-const tbMatIndigo = MaterialColor(_tbPrimaryColorValue, <int, Color>{
-  50: Color(0xFFE8EAF6),
-  100: Color(0xFFC5CAE9),
-  200: Color(0xFF9FA8DA),
-  300: Color(0xFF7986CB),
-  400: Color(0xFF5C6BC0),
-  500: _tbPrimaryColor,
-  600: _tbSecondaryColor,
-  700: Color(0xFF303F9F),
-  800: Color(0xFF283593),
-  900: Color(0xFF1A237E),
-});
+  for (int i = 1; i < 10; i++) strengths.add(0.1 * i);
+  for (var strength in strengths) {
+    final double ds = 0.5 - strength;
+    swatch[(strength * 1000).round()] = Color.fromRGBO(
+      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+      1,
+    );
+  }
+  return MaterialColor(color.value, swatch);
+}
 
-const tbDarkMatIndigo = MaterialColor(_tbPrimaryColorValue, <int, Color>{
-  50: Color(0xFFE8EAF6),
-  100: Color(0xFFC5CAE9),
-  200: Color(0xFF9FA8DA),
-  300: Color(0xFF7986CB),
-  400: Color(0xFF5C6BC0),
-  500: _tbDarkPrimaryColor,
-  600: _tbSecondaryColor,
-  700: Color(0xFF303F9F),
-  800: _tbPrimaryColor,
-  900: Color(0xFF1A237E),
-});
+final MaterialColor primarySwatch = createMaterialColor(_primaryColor);
+final MaterialColor darkPrimarySwatch = createMaterialColor(_secondaryColor);
 
-final ThemeData theme = ThemeData(primarySwatch: tbMatIndigo);
+// Base Typography
+Typography appTypography = Typography.material2018();
 
-ThemeData tbTheme = ThemeData(
+/// Light theme
+final ThemeData tbTheme = ThemeData(
   useMaterial3: false,
-  primarySwatch: tbMatIndigo,
-  colorScheme: theme.colorScheme.copyWith(
-    primary: tbMatIndigo,
-    secondary: Colors.deepOrange,
+  primarySwatch: primarySwatch,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.light,
+    primary: _primaryColor,
+    onPrimary: _onPrimaryColor,
+    secondary: _secondaryColor,
+    onSecondary: _onSecondaryColor,
+    tertiary: _tertiaryColor,
+    surface: _surfaceColor,
+    onSurface: _onSurfaceColor,
+    error: _errorColor,
+    onError: _onErrorColor,
+    background: _surfaceColor,
+    onBackground: _onSurfaceColor,
   ),
-  scaffoldBackgroundColor: const Color(0xFFFAFAFA),
-  textTheme: tbTypography.black,
-  primaryTextTheme: tbTypography.black,
-  typography: tbTypography,
+  scaffoldBackgroundColor: Colors.white,
+  textTheme: appTextTheme,
+  primaryTextTheme: appTextTheme,
+  typography: appTypography,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
-    foregroundColor: _tbTextColor,
-    iconTheme: IconThemeData(color: _tbTextColor),
+    foregroundColor: _textColor,
+    iconTheme: IconThemeData(color: _textColor),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Colors.white,
-    selectedItemColor: _tbPrimaryColor,
-    unselectedItemColor: Colors.black.withValues(alpha: .38),
+    selectedItemColor: _primaryColor,
+    unselectedItemColor: Colors.black.withOpacity(0.38),
     showSelectedLabels: true,
     showUnselectedLabels: true,
   ),
@@ -70,13 +81,43 @@ ThemeData tbTheme = ThemeData(
   ),
 );
 
-final ThemeData darkTheme = ThemeData(
-  primarySwatch: tbDarkMatIndigo,
+/// Dark theme
+final ThemeData tbDarkTheme = ThemeData(
+  primarySwatch: darkPrimarySwatch,
   brightness: Brightness.dark,
-);
-
-ThemeData tbDarkTheme = ThemeData(
-  primarySwatch: tbDarkMatIndigo,
-  colorScheme: darkTheme.colorScheme.copyWith(secondary: Colors.deepOrange),
-  brightness: Brightness.dark,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.dark,
+    primary: _secondaryColor,
+    onPrimary: _onSecondaryColor,
+    secondary: _tertiaryColor,
+    onSecondary: _onPrimaryColor,
+    tertiary: _tertiaryColor,
+    surface: Color(0xFF121212),
+    onSurface: Colors.white,
+    error: _errorColor,
+    onError: _onErrorColor,
+    background: Color(0xFF121212),
+    onBackground: Colors.white,
+  ),
+  textTheme: appTextTheme.apply(bodyColor: Colors.white),
+  primaryTextTheme: appTextTheme.apply(bodyColor: Colors.white),
+  typography: appTypography,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color(0xFF121212),
+    foregroundColor: Colors.white,
+    iconTheme: IconThemeData(color: Colors.white),
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: const Color(0xFF121212),
+    selectedItemColor: _secondaryColor,
+    unselectedItemColor: Colors.white.withOpacity(0.38),
+    showSelectedLabels: true,
+    showUnselectedLabels: true,
+  ),
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.iOS: FadeOpenPageTransitionsBuilder(),
+      TargetPlatform.android: FadeOpenPageTransitionsBuilder(),
+    },
+  ),
 );

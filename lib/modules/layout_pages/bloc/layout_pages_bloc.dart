@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:thingsboard_app/config/routes/route_not_found_widget.dart';
 import 'package:thingsboard_app/core/context/tb_context.dart';
@@ -186,23 +187,23 @@ class LayoutPagesBloc extends Bloc<LayoutPagesEvent, LayoutPagesState> {
 
     switch (pageLayout.id) {
       case Pages.home:
-        return Icons.home_outlined;
+        return Iconsax.home;
       case Pages.alarms:
-        return Icons.notifications_outlined;
+        return Iconsax.notification;
       case Pages.devices:
-        return Icons.devices_other_outlined;
+        return Iconsax.devices;
       case Pages.customers:
-        return Icons.supervisor_account_outlined;
+        return Iconsax.user_square;
       case Pages.assets:
-        return Icons.domain_outlined;
+        return Iconsax.document;
       case Pages.audit_logs:
-        return Icons.track_changes_outlined;
+        return Iconsax.activity;
       case Pages.notifications:
-        return Icons.notifications_active_outlined;
+        return Iconsax.notification_1;
       case Pages.device_list:
-        return Icons.devices;
+        return Iconsax.devices;
       case Pages.dashboards:
-        return Icons.dashboard_outlined;
+        return Iconsax.smart_home;
       case Pages.undefined:
       case null:
         return getIconFromString(pageLayout.icon);

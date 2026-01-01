@@ -1,4 +1,4 @@
-package org.thingsboard.app
+package com.loggino.app
 
 import android.app.Service
 import android.content.Intent

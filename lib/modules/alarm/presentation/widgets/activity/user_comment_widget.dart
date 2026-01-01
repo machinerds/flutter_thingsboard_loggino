@@ -53,7 +53,7 @@ class _UserCommentState extends State<UserCommentWidget> {
       menuOffset: 10,
       menuItems: [
         FocusedMenuItem(
-          title: Text(S.of(context).edit, style: TbTextStyles.bodyRegular),
+          title: Text(S.of(context).edit, style: TbTextStyles.bodyMedium),
           trailingIcon: Icon(
             Icons.edit_rounded,
             color: Colors.black.withValues(alpha: .54),
@@ -71,7 +71,7 @@ class _UserCommentState extends State<UserCommentWidget> {
         FocusedMenuItem(
           title: Text(
             S.of(context).delete,
-            style: TbTextStyles.bodyRegular.copyWith(
+            style: TbTextStyles.bodyMedium.copyWith(
               color: const Color(0xffD12730),
             ),
           ),

@@ -7,7 +7,6 @@ import 'package:thingsboard_app/thingsboard_client.dart';
 import 'package:thingsboard_app/utils/utils.dart';
 
 class DashboardGridCard extends TbContextWidget {
-
   DashboardGridCard(super.tbContext, {super.key, required this.dashboard});
   final DashboardInfo dashboard;
 
@@ -28,11 +27,10 @@ class _DashboardGridCardState extends TbContextState<DashboardGridCard> {
     final hasImage = widget.dashboard.image != null;
     Widget image;
     if (hasImage) {
-      image =
-          Utils.imageFromTbImage(context, tbClient, widget.dashboard.image);
+      image = Utils.imageFromTbImage(context, tbClient, widget.dashboard.image);
     } else {
       image = SvgPicture.asset(
-        ThingsboardImage.dashboardPlaceholder,
+        LogginoImage.dashboardPlaceholder,
         colorFilter: ColorFilter.mode(
           Theme.of(context).primaryColor,
           BlendMode.overlay,

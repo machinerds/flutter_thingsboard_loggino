@@ -24,20 +24,19 @@ class DashboardsAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TbAppBar(
-       canGoBack: leading != null,
+        canGoBack: leading != null,
         tbContext,
-        leading: leading ??
+        leading:
+            leading ??
             (Navigator.of(context).canPop()
-                ? BackButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                  )
+                ? BackButton(onPressed: () => Navigator.of(context).pop())
                 : null),
         elevation: dashboardState ? 0 : 8,
         title: Center(
           child: SizedBox(
             height: 24,
             child: SvgPicture.asset(
-              ThingsboardImage.thingsBoardWithTitle,
+              LogginoImage.logginoWithTitle,
               colorFilter: ColorFilter.mode(
                 Theme.of(context).primaryColor,
                 BlendMode.srcIn,
@@ -52,14 +51,11 @@ class DashboardsAppbar extends StatelessWidget {
               icon: const Icon(Icons.search),
               onPressed: () {
                 getIt<ThingsboardAppRouter>()
-                    // translate-me-ignore-next-line
-                    .navigateTo('/tenants?search=true');
+                // translate-me-ignore-next-line
+                .navigateTo('/tenants?search=true');
               },
             ),
-          if (leading != null)
-            const SizedBox(
-              width: 56,
-            ),
+          if (leading != null) const SizedBox(width: 56),
         ],
       ),
       body: body,

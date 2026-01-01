@@ -22,11 +22,7 @@ class BleDevicesEmptyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset(
-          ThingsboardImage.deviceNotFound,
-          width: 140,
-          height: 140,
-        ),
+        SvgPicture.asset(LogginoImage.deviceNotFound, width: 140, height: 140),
         const SizedBox(height: 16),
         Text(
           message,

@@ -9,11 +9,7 @@ import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 
 class MainDashboardPage extends TbContextWidget {
-  MainDashboardPage(
-    super.tbContext, {
-    required this.controller,
-    super.key,
-  });
+  MainDashboardPage(super.tbContext, {required this.controller, super.key});
 
   final DashboardPageController controller;
 
@@ -35,8 +31,8 @@ class _MainDashboardPageState extends TbContextState<MainDashboardPage>
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<String>(
-              valueListenable: dashboardTitleValue,
-              builder: (context, title, _) {
+      valueListenable: dashboardTitleValue,
+      builder: (context, title, _) {
         return Scaffold(
           appBar: TbAppBar(
             tbContext,
@@ -46,27 +42,28 @@ class _MainDashboardPageState extends TbContextState<MainDashboardPage>
                   await _dashboardController?.toggleRightLayout();
                   return;
                 }
-        
+
                 final controller = _dashboardController?.controller;
                 if (await controller?.canGoBack() == true) {
                   await controller?.goBack();
                 } else {
                   widget.controller.closeDashboard().then(
-                        (_) => _dashboardLoadingCtrl?.value = true,
-                      );
+                    (_) => _dashboardLoadingCtrl?.value = true,
+                  );
                 }
               },
             ),
             elevation: 1,
             shadowColor: Colors.transparent,
-            title: Text(title, style: TbTextStyles.titleXs,),
+            title: Text(title, style: TbTextStyles.labelMedium),
             actions: [
               ValueListenableBuilder<bool>(
                 valueListenable: hasRightLayout,
                 builder: (context, hasRightLayout, widget) {
                   if (hasRightLayout) {
                     return IconButton(
-                      onPressed: () => _dashboardController?.toggleRightLayout(),
+                      onPressed:
+                          () => _dashboardController?.toggleRightLayout(),
                       icon: AnimatedIcon(
                         progress: rightLayoutMenuAnimation,
                         icon: AnimatedIcons.menu_close,
@@ -95,7 +92,7 @@ class _MainDashboardPageState extends TbContextState<MainDashboardPage>
                     _dashboardController = controller;
                     _dashboardLoadingCtrl = loadingCtrl;
                     widget.controller.setDashboardController(controller);
-        
+
                     controller.hasRightLayout.addListener(() {
                       hasRightLayout.value = controller.hasRightLayout.value;
                     });
@@ -112,7 +109,7 @@ class _MainDashboardPageState extends TbContextState<MainDashboardPage>
             },
           ),
         );
-      }
+      },
     );
   }
 

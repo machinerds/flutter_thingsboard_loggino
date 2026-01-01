@@ -5,16 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:thingsboard_app/constants/assets_path.dart';
 
 class TbProgressIndicator extends ProgressIndicator {
-
   const TbProgressIndicator({
     super.key,
     this.size = 36.0,
     super.valueColor,
     super.semanticsLabel,
     super.semanticsValue,
-  }) : super(
-          value: null,
-        );
+  }) : super(value: null);
   final double size;
 
   @override
@@ -58,7 +55,7 @@ class _TbProgressIndicatorState extends State<TbProgressIndicator>
     return Stack(
       children: [
         SvgPicture.asset(
-          ThingsboardImage.thingsboardCenter,
+          LogginoImage.logginoCenter,
           height: widget.size,
           width: widget.size,
           colorFilter: ColorFilter.mode(
@@ -69,7 +66,7 @@ class _TbProgressIndicatorState extends State<TbProgressIndicator>
         AnimatedBuilder(
           animation: _rotation,
           child: SvgPicture.asset(
-            ThingsboardImage.thingsboardOuter,
+            LogginoImage.logginoOuter,
             height: widget.size,
             width: widget.size,
             colorFilter: ColorFilter.mode(

@@ -33,7 +33,7 @@ class _PasswordDialogState extends State<PasswordDialog> {
         ),
         title: Text(
           S.of(context).confirmation,
-          style: TbTextStyles.titleXs.copyWith(
+          style: TbTextStyles.labelMedium.copyWith(
             color: Colors.black.withValues(alpha: .87),
           ),
         ),

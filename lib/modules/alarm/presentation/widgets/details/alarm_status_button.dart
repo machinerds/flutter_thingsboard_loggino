@@ -15,7 +15,7 @@ class AlarmStatusButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Text(
           text,
-          style: TbTextStyles.titleXs,
+          style: TbTextStyles.labelMedium,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

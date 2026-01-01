@@ -34,18 +34,20 @@ class DeviceProvisioningView extends TbContextStatelessWidget {
   final bool mustReconnectToWifiBeforeClaiming;
   final String? ssid;
   final String? wifiPassword;
-final IOverlayService overlayService = getIt();
+  final IOverlayService overlayService = getIt();
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DeviceProvisioningBloc>(
-      create: (_) => DeviceProvisioningBloc.create(
-        deviceName: deviceName,
-        deviceSecretKey: deviceSecretKey,
-        tbClient: tbClient,
-        mustReconnectToWifiBeforeClaiming: mustReconnectToWifiBeforeClaiming,
-        ssid: ssid,
-        wifiPassword: wifiPassword,
-      ),
+      create:
+          (_) => DeviceProvisioningBloc.create(
+            deviceName: deviceName,
+            deviceSecretKey: deviceSecretKey,
+            tbClient: tbClient,
+            mustReconnectToWifiBeforeClaiming:
+                mustReconnectToWifiBeforeClaiming,
+            ssid: ssid,
+            wifiPassword: wifiPassword,
+          ),
       child: Column(
         children: [
           Center(
@@ -54,20 +56,20 @@ final IOverlayService overlayService = getIt();
                 if (state is DeviceProvisioningErrorState ||
                     state is DeviceProvisioningClaimingErrorState) {
                   return SvgPicture.asset(
-                    ThingsboardImage.deviceProvisioningError,
+                    LogginoImage.deviceProvisioningError,
                     width: 140,
                     height: 140,
                   );
                 } else if (state is DeviceProvisioningReconnectToWifiState) {
                   return SvgPicture.asset(
-                    ThingsboardImage.connectMobile,
+                    LogginoImage.connectMobile,
                     width: 140,
                     height: 140,
                   );
                 }
 
                 return SvgPicture.asset(
-                  ThingsboardImage.deviceProvisioning,
+                  LogginoImage.deviceProvisioning,
                   width: 140,
                   height: 140,
                 );
@@ -79,9 +81,7 @@ final IOverlayService overlayService = getIt();
             listener: (context, state) {
               if (state is DeviceProvisioningClaimingErrorState) {
                 if (state.message != null) {
-                  overlayService.showErrorNotification( (_) => 
-                    state.message!,
-                  );
+                  overlayService.showErrorNotification((_) => state.message!);
                 }
               }
             },
@@ -127,9 +127,11 @@ final IOverlayService overlayService = getIt();
                   children: [
                     TryAgainButton(
                       label: S.of(context).openWifiSettings,
-                      onTryAgain: () => Platform.isAndroid
-                          ? const OpenSettingsPlusAndroid().wifi()
-                          : const OpenSettingsPlusIOS().wifi(),
+                      onTryAgain:
+                          () =>
+                              Platform.isAndroid
+                                  ? const OpenSettingsPlusAndroid().wifi()
+                                  : const OpenSettingsPlusIOS().wifi(),
                     ),
                     const SizedBox(height: 16),
                     SizedBox(
@@ -148,9 +150,9 @@ final IOverlayService overlayService = getIt();
                           ),
                         ),
                         onPressed: () {
-                          context
-                              .read<DeviceProvisioningBloc>()
-                              .add(const ProceedWithClaimingEvent());
+                          context.read<DeviceProvisioningBloc>().add(
+                            const ProceedWithClaimingEvent(),
+                          );
                         },
                       ),
                     ),

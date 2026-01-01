@@ -30,6 +30,7 @@ class _ThingsBoardAppState extends State<ThingsboardApp> {
   Widget build(BuildContext context) {
     return ToastificationWrapper(
       child: MaterialApp(
+        locale: const Locale('fa'),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -42,7 +43,7 @@ class _ThingsBoardAppState extends State<ThingsboardApp> {
         theme: tbTheme,
         darkTheme: tbDarkTheme,
         navigatorKey: getIt<ThingsboardAppRouter>().navigatorKey,
-       onGenerateRoute: getIt<ThingsboardAppRouter>().router.generator,
+        onGenerateRoute: getIt<ThingsboardAppRouter>().router.generator,
         navigatorObservers: [
           getIt<ThingsboardAppRouter>().tbContext.routeObserver,
         ],

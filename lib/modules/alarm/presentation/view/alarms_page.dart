@@ -14,11 +14,7 @@ import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 
 class AlarmsPage extends TbContextWidget {
-  AlarmsPage(
-    super.tbContext, {
-    this.searchMode = false,
-    super.key,
-  });
+  AlarmsPage(super.tbContext, {this.searchMode = false, super.key});
 
   final bool searchMode;
 
@@ -52,7 +48,7 @@ class _AlarmsPageState extends TbContextState<AlarmsPage>
                   tbContext,
                   title: Text(
                     S.of(context).alarms(2),
-                    style: TbTextStyles.titleXs,
+                    style: TbTextStyles.labelMedium,
                   ),
                   actions: [
                     Stack(
@@ -77,9 +73,7 @@ class _AlarmsPageState extends TbContextState<AlarmsPage>
                                   height: 8,
                                   width: 8,
                                   decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.white,
-                                    ),
+                                    border: Border.all(color: Colors.white),
                                     borderRadius: BorderRadius.circular(16),
                                     color: Theme.of(context).primaryColor,
                                   ),
@@ -96,8 +90,8 @@ class _AlarmsPageState extends TbContextState<AlarmsPage>
                       icon: const Icon(Icons.search),
                       onPressed: () {
                         getIt<ThingsboardAppRouter>()
-                            // translate-me-ignore-next-line
-                            .navigateTo('/alarms?search=true');
+                        // translate-me-ignore-next-line
+                        .navigateTo('/alarms?search=true');
                       },
                     ),
                   ],

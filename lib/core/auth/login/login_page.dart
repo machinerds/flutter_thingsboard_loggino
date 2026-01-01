@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:thingsboard_app/config/routes/router.dart';
@@ -122,7 +123,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         SvgPicture.asset(
-                                          ThingsboardImage.thingsBoardWithTitle,
+                                          LogginoImage.logginoWithTitle,
                                           height: 25,
                                           colorFilter: ColorFilter.mode(
                                             Theme.of(context).primaryColor,
@@ -152,7 +153,9 @@ class _LoginPageState extends TbPageState<LoginPage>
                                               children: [
                                                 Text(
                                                   selectedRegion
-                                                          ?.regionToString(context) ??
+                                                          ?.regionToString(
+                                                            context,
+                                                          ) ??
                                                       '',
                                                   style: TbTextStyles.bodyLarge,
                                                 ),
@@ -199,7 +202,6 @@ class _LoginPageState extends TbPageState<LoginPage>
                                             ),
                                             child: Center(
                                               child: Text(
-                                              
                                                 S.of(context).loginWith,
                                                 style: TbTextStyles.bodyMedium
                                                     .copyWith(
@@ -225,13 +227,13 @@ class _LoginPageState extends TbPageState<LoginPage>
                                                 child: Row(
                                                   children: [
                                                     SvgPicture.asset(
-                                                      ThingsboardImage
+                                                      LogginoImage
                                                           // translate-me-ignore-next-line
                                                           .oauth2Logos['qr-code-logo']!,
                                                       height: 24,
                                                     ),
                                                     const SizedBox(width: 8),
-                                                     Text(
+                                                    Text(
                                                       S.of(context).scanQrCode,
                                                       style: const TextStyle(
                                                         color: Colors.black,
@@ -365,7 +367,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                                     suffixIcon: IconButton(
                                                       icon: Icon(
                                                         showPassword
-                                                            ? Icons.visibility
+                                                            ? Iconsax.eye
                                                             : Icons
                                                                 .visibility_off,
                                                       ),
@@ -509,7 +511,7 @@ class _LoginPageState extends TbPageState<LoginPage>
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Center(
             child: Text(
-             S.of(context).loginWith,
+              S.of(context).loginWith,
               style: TbTextStyles.bodyMedium.copyWith(
                 color: Colors.black.withValues(alpha: .54),
               ),
@@ -535,10 +537,10 @@ class _LoginPageState extends TbPageState<LoginPage>
             Expanded(
               child: OutlinedButton(
                 style: _oauth2IconButtonStyle,
-                onPressed: ()  => _onLoginWithBarcode(context),
+                onPressed: () => _onLoginWithBarcode(context),
                 child: SvgPicture.asset(
                   // translate-me-ignore-next-line
-                  ThingsboardImage.oauth2Logos['qr-code']!,
+                  LogginoImage.oauth2Logos['qr-code']!,
                   height: 24,
                 ),
               ),
@@ -552,9 +554,9 @@ class _LoginPageState extends TbPageState<LoginPage>
   Widget _buildOAuth2Button(OAuth2ClientInfo client, bool expand, bool isLast) {
     Widget? icon;
     if (client.icon != null) {
-      if (ThingsboardImage.oauth2Logos.containsKey(client.icon)) {
+      if (LogginoImage.oauth2Logos.containsKey(client.icon)) {
         icon = SvgPicture.asset(
-          ThingsboardImage.oauth2Logos[client.icon]!,
+          LogginoImage.oauth2Logos[client.icon]!,
           height: 24,
         );
       } else {

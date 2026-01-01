@@ -17,7 +17,7 @@ class TbAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: title,
-      titleTextStyle: TbTextStyles.titleXs.copyWith(
+      titleTextStyle: TbTextStyles.bodyLarge.copyWith(
         color: const Color(0xff1D1B20),
       ),
       titlePadding: const EdgeInsets.all(24),

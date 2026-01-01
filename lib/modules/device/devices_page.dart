@@ -12,19 +12,19 @@ class DevicesPage extends TbPageWidget {
 }
 
 class _DevicesPageState extends TbPageState<DevicesPage> {
-  final PageLinkController _pageLinkController = PageLinkController(pageSize: 10);
+  final PageLinkController _pageLinkController = PageLinkController(
+    pageSize: 10,
+  );
 
   @override
+  /*******  c7e9cde3-471f-41b1-bdd8-eb4d41e7f0ee  *******/
   Widget build(BuildContext context) {
     final deviceProfilesList = DeviceProfilesGrid(
       tbContext,
       _pageLinkController,
     );
     return Scaffold(
-      appBar: TbAppBar(
-        tbContext,
-        title: Text(deviceProfilesList.title),
-      ),
+      appBar: TbAppBar(tbContext, title: Text(deviceProfilesList.title)),
       body: deviceProfilesList,
     );
   }

@@ -1,4 +1,3 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:super_tooltip/super_tooltip.dart';
@@ -60,7 +59,7 @@ class _TbAppBarState extends TbContextState<TbAppBar> {
 
   AppBar buildDefaultBar() {
     return AppBar(
-      titleTextStyle: TbTextStyles.titleXs.copyWith(
+      titleTextStyle: TbTextStyles.bodyLarge.copyWith(
         color: AppColors.textPrimary,
       ),
       leading:

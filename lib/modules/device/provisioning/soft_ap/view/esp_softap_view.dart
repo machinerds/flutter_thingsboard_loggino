@@ -75,7 +75,7 @@ class _EspSoftApViewState extends TbContextState<EspSoftApView> {
                         return '';
                     }
                   }(),
-                  style: TbTextStyles.titleXs.copyWith(
+                  style: TbTextStyles.labelMedium.copyWith(
                     color: Colors.black.withValues(alpha: .87),
                   ),
                 ),
@@ -114,10 +114,7 @@ class _EspSoftApViewState extends TbContextState<EspSoftApView> {
                       return WifiList(
                         tbContext,
                         wifi:
-                            state.wifiList
-                                .map((e) => e.ssid).toSet()
-                                .toList()
-                                ,
+                            state.wifiList.map((e) => e.ssid).toSet().toList(),
                       );
 
                     case EspSoftApProvisioningInProgressState():
@@ -140,17 +137,23 @@ class _EspSoftApViewState extends TbContextState<EspSoftApView> {
                             () => context.read<EspSoftApBloc>().add(
                               const EspSoftApConnectToDeviceEvent(),
                             ),
-                        assetPath: ThingsboardImage.mobileConnectionError,
-                        message:
-                            S.of(context).connectionToTheWifiNetworkFailednpleaseEnsureThatYour(widget.name),
+                        assetPath: LogginoImage.mobileConnectionError,
+                        message: S
+                            .of(context)
+                            .connectionToTheWifiNetworkFailednpleaseEnsureThatYour(
+                              widget.name,
+                            ),
                       );
 
                     case EspSoftApWifiNetworksNotFoundState():
                       return EspSoftApConnectionErrorView(
                         onTryAgain: () {},
-                        assetPath: ThingsboardImage.mobileConnectionError,
-                        message:
-                            S.of(context).unableConnectToWifiBecauseNetworksWasntFoundByDevice(widget.name),
+                        assetPath: LogginoImage.mobileConnectionError,
+                        message: S
+                            .of(context)
+                            .unableConnectToWifiBecauseNetworksWasntFoundByDevice(
+                              widget.name,
+                            ),
                       );
 
                     case EspSoftApProvisioningDoneState():

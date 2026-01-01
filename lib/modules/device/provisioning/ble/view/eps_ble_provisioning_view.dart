@@ -79,7 +79,7 @@ class _EspBleProvisioningViewState
                         return '';
                     }
                   }(),
-                  style: TbTextStyles.titleXs.copyWith(
+                  style: TbTextStyles.labelMedium.copyWith(
                     color: Colors.black.withValues(alpha: .87),
                   ),
                 ),

@@ -25,8 +25,15 @@ mixin DeviceProfilesBase on EntitiesBase<DeviceProfileInfo, PageLink> {
   String get noItemsFoundText => 'No devices found';
 
   @override
-  Future<PageData<DeviceProfileInfo>> fetchEntities(PageLink pageLink, {bool refresh = false}) {
-    return DeviceProfileCache.getDeviceProfileInfos(tbClient, pageLink, invalidateCache: refresh);
+  Future<PageData<DeviceProfileInfo>> fetchEntities(
+    PageLink pageLink, {
+    bool refresh = false,
+  }) {
+    return DeviceProfileCache.getDeviceProfileInfos(
+      tbClient,
+      pageLink,
+      invalidateCache: refresh,
+    );
   }
 
   @override
@@ -141,10 +148,13 @@ class _AllDevicesCardState extends TbContextState<AllDevicesCard> {
             ),
           ],
         ),
-        child: Card(
+        child: Container(
           margin: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-          elevation: 0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white60,
+            border: Border.all(width: 3, color: Colors.white),
+          ),
           child: Column(
             children: [
               Padding(
@@ -328,12 +338,15 @@ class _DeviceProfileCardState extends TbContextState<DeviceProfileCard> {
       image = SvgPicture.asset(
         width: 64,
         height: 64,
-        ThingsboardImage.deviceProfilePlaceholder,
+        LogginoImage.deviceProfilePlaceholder,
         semanticsLabel: 'Device profile',
       );
     }
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(4),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white60,
+        border: Border.all(width: 3, color: Colors.white),
+      ),
       child: Column(
         children: [
           Expanded(
@@ -367,7 +380,11 @@ class _DeviceProfileCardState extends TbContextState<DeviceProfileCard> {
                 if (snapshot.hasData &&
                     snapshot.connectionState == ConnectionState.done) {
                   final deviceCount = snapshot.data!;
-                  return _buildDeviceCount(context, true, deviceCount.activeCount!);
+                  return _buildDeviceCount(
+                    context,
+                    true,
+                    deviceCount.activeCount!,
+                  );
                 } else {
                   return SizedBox(
                     height: 40,
@@ -405,7 +422,11 @@ class _DeviceProfileCardState extends TbContextState<DeviceProfileCard> {
                 if (snapshot.hasData &&
                     snapshot.connectionState == ConnectionState.done) {
                   final deviceCount = snapshot.data!;
-                  return _buildDeviceCount(context, false, deviceCount.inactiveCount!);
+                  return _buildDeviceCount(
+                    context,
+                    false,
+                    deviceCount.inactiveCount!,
+                  );
                 } else {
                   return SizedBox(
                     height: 40,

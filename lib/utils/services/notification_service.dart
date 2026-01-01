@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:thingsboard_app/config/routes/router.dart';
 import 'package:thingsboard_app/config/themes/tb_theme.dart';
@@ -35,21 +36,16 @@ class NotificationService {
 
     final message = await FirebaseMessaging.instance.getInitialMessage();
     if (message != null) {
-      NotificationService.handleClickOnNotification(
-        message.data,
-        _tbContext,
-      );
+      NotificationService.handleClickOnNotification(message.data, _tbContext);
     }
 
-    _onMessageOpenedAppSubscription =
-        FirebaseMessaging.onMessageOpenedApp.listen(
-      (message)  {
-        NotificationService.handleClickOnNotification(
-          message.data,
-          _tbContext,
-        );
-      },
-    );
+    _onMessageOpenedAppSubscription = FirebaseMessaging.onMessageOpenedApp
+        .listen((message) {
+          NotificationService.handleClickOnNotification(
+            message.data,
+            _tbContext,
+          );
+        });
 
     final settings = await _requestPermission();
     _log.debug(
@@ -59,10 +55,12 @@ class NotificationService {
         settings.authorizationStatus == AuthorizationStatus.provisional) {
       await _getAndSaveToken();
 
-      _onTokenRefreshSubscription =
-          FirebaseMessaging.instance.onTokenRefresh.listen((token) {
+      _onTokenRefreshSubscription = FirebaseMessaging.instance.onTokenRefresh
+          .listen((token) {
             if (_fcmToken != null) {
-          _tbClient.getUserService().removeMobileSession(_fcmToken!).then((_) {
+              _tbClient.getUserService().removeMobileSession(_fcmToken!).then((
+                _,
+              ) {
                 _fcmToken = token;
                 if (_fcmToken != null) {
                   _saveToken(_fcmToken!);
@@ -88,13 +86,13 @@ class NotificationService {
 
   Future<String?> getToken() async {
     try {
-    return  _fcmToken = await _messaging.getToken();
+      return _fcmToken = await _messaging.getToken();
     } catch (_) {
       return null;
     }
   }
 
-  Future<RemoteMessage?> initialMessage()  {
+  Future<RemoteMessage?> initialMessage() {
     return _messaging.getInitialMessage();
   }
 
@@ -121,8 +119,9 @@ class NotificationService {
   }
 
   Future<void> _initFlutterLocalNotificationsPlugin() async {
-    const initializationSettingsAndroid =
-        AndroidInitializationSettings('@drawable/ic_launcher_foreground');
+    const initializationSettingsAndroid = AndroidInitializationSettings(
+      '@drawable/ic_launcher_foreground',
+    );
 
     const initializationSettingsIOS = DarwinInitializationSettings();
 
@@ -143,8 +142,8 @@ class NotificationService {
       },
     );
 
-    final androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      color: appPrimaryColor,
+    const androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      color: const Color.fromRGBO(86, 16, 68, 1),
       'general',
       // translate-me-ignore-next-line
       'General notifications',
@@ -157,7 +156,7 @@ class NotificationService {
 
     const iOSPlatformChannelSpecifics = DarwinNotificationDetails();
 
-    _notificationDetails = NotificationDetails(
+    _notificationDetails = const NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
     );
@@ -165,9 +164,7 @@ class NotificationService {
 
   Future<NotificationSettings> _requestPermission() async {
     _messaging = FirebaseMessaging.instance;
-    final result = await _messaging.requestPermission(
-      provisional: true,
-    );
+    final result = await _messaging.requestPermission(provisional: true);
 
     if (result.authorizationStatus == AuthorizationStatus.denied) {
       return result;
@@ -190,8 +187,9 @@ class NotificationService {
     _log.debug('FCM token: $fcmToken');
 
     if (fcmToken != null) {
-      final MobileSessionInfo? mobileInfo =
-          await _tbClient.getUserService().getMobileSession(fcmToken);
+      final MobileSessionInfo? mobileInfo = await _tbClient
+          .getUserService()
+          .getMobileSession(fcmToken);
       if (mobileInfo != null) {
         final int timeAfterCreatedToken =
             DateTime.now().millisecondsSinceEpoch -
@@ -232,8 +230,9 @@ class NotificationService {
   }
 
   void _subscribeOnForegroundMessage() {
-    _foregroundMessageSubscription =
-        FirebaseMessaging.onMessage.listen((message) {
+    _foregroundMessageSubscription = FirebaseMessaging.onMessage.listen((
+      message,
+    ) {
       _log.debug('Message:$message');
       if (message.sentTime == null) {
         final map = message.toMap();
@@ -275,22 +274,26 @@ class NotificationService {
 
           final state = Utils.createDashboardEntityState(
             entityId,
-            stateId: (data['dashboardState'] ?? data['onClick.dashboardState'])
+            stateId:
+                (data['dashboardState'] ?? data['onClick.dashboardState'])
                     .toString(),
           );
 
           if (dashboardId != null) {
-            getIt<ThingsboardAppRouter>()
-                .navigateToDashboard(dashboardId, state: state);
+            getIt<ThingsboardAppRouter>().navigateToDashboard(
+              dashboardId,
+              state: state,
+            );
           }
 
         case 'LINK':
           final rawLink = data['link'] ?? data['onClick.link'];
           if (rawLink != null) {
-           final  link = (data['link'] ?? data['onClick.link']).toString();
+            final link = (data['link'] ?? data['onClick.link']).toString();
             if (Uri.parse(link).isAbsolute) {
-              getIt<ThingsboardAppRouter>()
-                  .navigateTo('/url/${Uri.encodeComponent(link)}');
+              getIt<ThingsboardAppRouter>().navigateTo(
+                '/url/${Uri.encodeComponent(link)}',
+              );
             } else if (link == '/notifications' &&
                 !isOnNotificationsScreenAlready) {
               getIt<ThingsboardAppRouter>().navigateTo(link);

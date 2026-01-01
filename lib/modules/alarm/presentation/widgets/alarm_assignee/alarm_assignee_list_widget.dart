@@ -210,7 +210,7 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
                         const SizedBox(height: 72),
                         Text(
                           S.of(context).noResultsFound,
-                          style: TbTextStyles.titleXs.copyWith(
+                          style: TbTextStyles.labelMedium.copyWith(
                             color: Colors.black.withValues(alpha: .87),
                           ),
                         ),

@@ -2,79 +2,78 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract final class TbTextStyles {
-  static final titleXs = GoogleFonts.roboto(
-    fontWeight: FontWeight.w500,
-    fontSize: 18,
-    height: 1.33,
-    letterSpacing: .15,
+  static final displayLarge = GoogleFonts.vazirmatn(
+    fontSize: 57,
+    fontWeight: FontWeight.w800,
   );
 
-  static final titleSmallSb = GoogleFonts.roboto(
+  static final displayMedium = GoogleFonts.vazirmatn(
+    fontSize: 45,
     fontWeight: FontWeight.w600,
-    fontSize: 20,
-    letterSpacing: .01,
-    height: 1.2,
   );
 
-  static final titleMedium = GoogleFonts.roboto(
-    fontWeight: FontWeight.w500,
-    fontSize: 24,
-    height: 1.33,
+  static final displaySmall = GoogleFonts.vazirmatn(
+    fontSize: 36,
+    fontWeight: FontWeight.w600,
   );
 
-  static final titleLarge = GoogleFonts.roboto(
-    fontWeight: FontWeight.w500,
+  static final headlineLarge = GoogleFonts.vazirmatn(
+    fontSize: 32,
+    fontWeight: FontWeight.w600,
+  );
+
+  static final headlineMedium = GoogleFonts.vazirmatn(
     fontSize: 28,
-    height: 1.28,
-    letterSpacing: .25,
+    fontWeight: FontWeight.w500,
   );
 
-  static final labelSmall = GoogleFonts.roboto(
-    fontWeight: FontWeight.w400,
+  static final headlineSmall = GoogleFonts.vazirmatn(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final titleLarge = GoogleFonts.vazirmatn(
+    fontSize: 22,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final titleMedium = GoogleFonts.vazirmatn(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final titleSmall = GoogleFonts.vazirmatn(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final bodyLarge = GoogleFonts.vazirmatn(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+  );
+
+  static final bodyMedium = GoogleFonts.vazirmatn(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  );
+
+  static final bodySmall = GoogleFonts.vazirmatn(
     fontSize: 12,
-    height: 1.14,
-    letterSpacing: .4,
+    fontWeight: FontWeight.normal,
   );
 
-  static final labelMedium = GoogleFonts.roboto(
-    fontWeight: FontWeight.w500,
+  static final labelLarge = GoogleFonts.vazirmatn(
     fontSize: 14,
-    letterSpacing: .25,
-    height: 1.4,
-  );
-
-  static final labelLarge = GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
-    fontSize: 16,
-    letterSpacing: .25,
-    height: 1.5,
   );
 
-  static final bodySmall = GoogleFonts.roboto(
-    fontWeight: FontWeight.w400,
+  static final labelMedium = GoogleFonts.vazirmatn(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final labelSmall = GoogleFonts.vazirmatn(
     fontSize: 11,
-    height: 1.45,
-    letterSpacing: .25,
-  );
-
-  static final bodyMedium = GoogleFonts.roboto(
-    fontWeight: FontWeight.w400,
-    fontSize: 14,
-    letterSpacing: .2,
-    height: 1.4,
-  );
-
-  static final bodyRegular = GoogleFonts.roboto(
-    fontWeight: FontWeight.w400,
-    fontSize: 17,
-    height: 1.5,
-    letterSpacing: -0.41,
-  );
-
-  static final bodyLarge = GoogleFonts.roboto(
-    fontWeight: FontWeight.w400,
-    fontSize: 16,
-    letterSpacing: .15,
-    height: 1.5,
+    fontWeight: FontWeight.w500,
   );
 }
