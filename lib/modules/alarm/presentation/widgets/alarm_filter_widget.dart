@@ -21,8 +21,12 @@ class AlarmFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black.withValues(alpha: 0.12)),
-        borderRadius: BorderRadius.circular(6),
+        color: Colors.white.withOpacity(0.6), // Changed to white low opacity
+        border: Border.all(
+          color: const Color.fromARGB(255, 255, 255, 255), // Changed to white
+          width: 10, // Increased width
+        ),
+        borderRadius: BorderRadius.circular(30), // Increased radius
       ),
       width: double.infinity,
       child: Column(

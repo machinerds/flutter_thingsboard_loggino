@@ -35,14 +35,7 @@ class DashboardsAppbar extends StatelessWidget {
         title: Center(
           child: SizedBox(
             height: 24,
-            child: SvgPicture.asset(
-              LogginoImage.logginoWithTitle,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).primaryColor,
-                BlendMode.srcIn,
-              ),
-              semanticsLabel: 'ThingsBoard Logo',
-            ),
+            child: Image.asset(LogginoImage.logginoWithTitle),
           ),
         ),
         actions: [

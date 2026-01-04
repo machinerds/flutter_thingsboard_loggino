@@ -1,13 +1,13 @@
 abstract class LogginoImage {
-  static const logginoWithTitle = 'assets/images/loggino_with_title.svg';
+  static const logginoWithTitle = 'assets/images/loggino_with_title.png';
   static const loggino = 'assets/images/loggino.svg';
   static const logginoOuter = 'assets/images/loggino_outer.svg';
-  static const logginoCenter = 'assets/images/loggino_center.svg';
+  static const logginoCenter = 'assets/images/loggino_center.png';
   static const dashboardPlaceholder = 'assets/images/dashboard-placeholder.svg';
   static const deviceProfilePlaceholder =
       'assets/images/device-placeholder.svg';
   static const noDataImage = 'assets/images/no-data.svg';
-  static const logginoBigLogo = 'assets/images/loggino_big_logo.svg';
+  static const logginoBigLogo = 'assets/images/loggino_big_logo.png';
   static const deviceProvisioning = 'assets/images/provisioning.svg';
   static const deviceProvisioningDone = 'assets/images/provisioning-done.svg';
   static const deviceProvisioningError =

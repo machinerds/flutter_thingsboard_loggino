@@ -3,7 +3,7 @@ description: Flutter ThingsBoard Mobile Application
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.7.0+8
+version: 1.7.0+9
 
 environment:
   sdk: ^3.7.0
@@ -112,7 +112,7 @@ flutter_launcher_icons:
   ### android config
   android: "launcher_icon"
   #fallback android icon
-  image_path_android: "assets/branding/app_icon.jpg"
+  image_path: "assets/branding/app_icon.jpg"
 
   ios: true
   #fallback ios icon

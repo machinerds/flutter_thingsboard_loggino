@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:thingsboard_app/config/routes/router.dart';
 import 'package:thingsboard_app/core/auth/noauth/presentation/widgets/endpoint_name_widget.dart';
 import 'package:thingsboard_app/core/usecases/user_details_usecase.dart';
@@ -32,7 +33,7 @@ class ProfileWidget extends StatelessWidget {
               width: 32,
               child: IconButton(
                 icon: Icon(
-                  Icons.settings,
+                  Iconsax.setting_2,
                   color: Colors.black.withValues(alpha: .54),
                   size: 18,
                 ),

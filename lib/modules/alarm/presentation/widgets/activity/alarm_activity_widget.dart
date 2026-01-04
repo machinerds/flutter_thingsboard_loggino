@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/generated/l10n.dart';
@@ -44,7 +45,7 @@ class _AlarmActivityWidgetState extends State<AlarmActivityWidget> {
         action: GestureDetector(
           behavior: HitTestBehavior.opaque,
           child: Icon(
-            Icons.refresh_rounded,
+            Iconsax.refresh,
             color: Colors.black.withValues(alpha: .54),
           ),
           onTap: () {

@@ -54,14 +54,10 @@ class _TbProgressIndicatorState extends State<TbProgressIndicator>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SvgPicture.asset(
+        Image.asset(
           LogginoImage.logginoCenter,
-          height: widget.size,
-          width: widget.size,
-          colorFilter: ColorFilter.mode(
-            widget._getValueColor(context),
-            BlendMode.srcIn,
-          ),
+          height: widget.size - 15,
+          width: widget.size - 15,
         ),
         AnimatedBuilder(
           animation: _rotation,

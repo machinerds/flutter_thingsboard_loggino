@@ -13,7 +13,6 @@ import 'package:thingsboard_app/utils/services/device_info/i_device_info_service
 import 'package:thingsboard_app/utils/services/layouts/i_layout_service.dart';
 import 'package:thingsboard_app/utils/services/notification_service.dart';
 
-
 class MorePage extends TbContextWidget {
   MorePage(super.tbContext, {super.key});
 
@@ -35,55 +34,105 @@ class _MorePageState extends TbContextState<MorePage> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ProfileWidget(
-                      userDetails: userDetails,
-                      user: tbContext.userDetails,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
-                      child: Divider(
-                        color: Colors.black.withValues(alpha: .05),
-                        thickness: 1,
-                        height: 0,
+          decoration: BoxDecoration(color: Colors.white.withOpacity(0.95)),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.6),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            width: 8,
+                          ),
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: ProfileWidget(
+                          userDetails: userDetails,
+                          user: tbContext.userDetails,
+                        ),
                       ),
-                    ),
-                    Flexible(child: buildMoreMenuItems(context)),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
-                      child: Divider(
-                        color: Colors.black.withValues(alpha: .05),
-                        thickness: 1,
-                        height: 0,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24),
+                        child: Divider(
+                          color: Colors.black.withValues(alpha: .05),
+                          thickness: 1,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                    MoreMenuItemWidget(
-                      TbMainNavigationItem(
-                        title: S.of(context).logout,
-                        icon: Icons.logout,
-                        page: const SizedBox.shrink(),
-                        path: '',
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.6),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            width: 8,
+                          ),
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Flexible(child: buildMoreMenuItems(context)),
                       ),
-                      color: const Color(0xffD12730),
-                      onTap: () {
-                        tbContext.logout(
-                          requestConfig: RequestConfig(ignoreErrors: true),
-                        );
-                      },
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24),
+                        child: Divider(
+                          color: Colors.black.withValues(alpha: .05),
+                          thickness: 1,
+                          height: 0,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.6),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            width: 8,
+                          ),
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: MoreMenuItemWidget(
+                          TbMainNavigationItem(
+                            title: S.of(context).logout,
+                            icon: Icons.logout,
+                            page: const SizedBox.shrink(),
+                            path: '',
+                          ),
+                          color: const Color(0xffD12730),
+                          onTap: () {
+                            tbContext.logout(
+                              requestConfig: RequestConfig(ignoreErrors: true),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              versionInfo(),
-              appVersionInfo(),
-            ],
+                Container(
+                  margin: const EdgeInsets.only(top: 16, left: 4, right: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.6),
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      width: 8,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12,
+                    horizontal: 16,
+                  ),
+                  child: Column(children: [versionInfo(), appVersionInfo()]),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -103,9 +152,7 @@ class _MorePageState extends TbContextState<MorePage> {
               ),
             )
             .toList();
-    return SingleChildScrollView(
-      child: Column(spacing: 16 ,children: widgets),
-    );
+    return SingleChildScrollView(child: Column(spacing: 16, children: widgets));
   }
 
   @override

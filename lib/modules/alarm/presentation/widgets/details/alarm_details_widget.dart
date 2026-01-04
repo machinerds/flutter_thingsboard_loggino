@@ -43,8 +43,12 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
       child: ScrollOnExpand(
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.black.withValues(alpha: .12)),
-            borderRadius: BorderRadius.circular(6),
+            color: Colors.white60,
+            border: Border.all(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(30),
           ),
           child: ExpandablePanel(
             theme: const ExpandableThemeData(hasIcon: false),
